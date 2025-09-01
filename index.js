@@ -24,7 +24,7 @@ app.post("/api/ask", async (req, res) => {
     if (Array.isArray(req.body?.messages)) {
       // Pass-through mode (original site format)
       payload = {
-        model: req.body.model || "llama3-70b-8192",
+model: req.body.model || "llama-3.1-70b-versatile", 
         messages: req.body.messages,
         temperature: typeof req.body.temperature === "number" ? req.body.temperature : 0.9,
         stream: false
@@ -32,11 +32,11 @@ app.post("/api/ask", async (req, res) => {
     } else if (typeof req.body?.prompt === "string") {
       // Simple mode (new format)
       payload = {
-        model: "llama3-70b-8192",
-        messages: [
-          { role: "system", content: "You are Echo, a helpful AI assistant." },
-          { role: "user", content: String(req.body.prompt) }
-        ],
+   model: "llama-3.1-70b-versatile", 
+     messages: [
+      { role: "system", content: "You are Echo, a helpful AI assistant." },
+      { role: "user", content: String(req.body.prompt) }
+    ],       ],
         temperature: 0.9,
         stream: false
       };
