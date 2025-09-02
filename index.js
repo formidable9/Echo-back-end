@@ -24,7 +24,7 @@ app.post("/api/ask", async (req, res) => {
     if (Array.isArray(req.body?.messages)) {
       // Pass-through mode (original site format)
       payload = {
-model: req.body.model ||llama-3.3-70b-versatile, 
+model: req.body.model || "llama-3.3-70b-versatile", 
         messages: req.body.messages,
         temperature: typeof req.body.temperature === "number" ? req.body.temperature : 0.9,
         stream: false
